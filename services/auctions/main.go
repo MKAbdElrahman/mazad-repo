@@ -42,7 +42,9 @@ func main() {
 	auctionStore := store.NewPostgresAuctionStore(db)
 	auctionHandler := handler.NewAuctionHandler(auctionStore)
 
-	r.Post("/api/auctions", auctionHandler.HandleCreateAuction)
+	r.Get("/api/auctions", auctionHandler.GetAllAuctions)
+	r.Get("/api/auctions/{id}", auctionHandler.GetAuctionByID)
+	r.Post("/api/auctions", auctionHandler.CreateAuction)
 
 	http.ListenAndServe(":3000", r)
 }

@@ -5,12 +5,12 @@ import (
 )
 
 type Item struct {
-	Name         string   `json:"item_name"`
-	Description  string   `json:"item_description"`
-	Category     string   `json:"item_category"`
-	Manufacturer string   `json:"item_manufacturer"`
-	Condition    string   `json:"item_condition"`
-	Images       []string `json:"item_images"`
+	Name         string   `json:"name"`
+	Description  string   `json:"description"`
+	Category     string   `json:"category"`
+	Manufacturer string   `json:"manufacturer"`
+	Condition    string   `json:"condition"`
+	Images       []string `json:"images"`
 }
 
 type Auction struct {
@@ -37,9 +37,20 @@ const (
 )
 
 // AuctionPayload represents the data expected when creating a new auction.
-type AuctionPayload struct {
+type CreateAuctionPayload struct {
 	Item         Item      `json:"item"`
 	ReservePrice int       `json:"reserve_price"`
 	AuctionEnd   time.Time `json:"auction_end"`
 	Seller       string    `json:"seller"`
 }
+
+// UpdateAuctionPayload represents the data expected when updating an existing auction.
+type UpdateAuctionPayload struct {
+	AuctionID      string        `json:"auction_id"`
+	ReservePrice   int           `json:"reserve_price"`
+	CurrentHighBid int           `json:"current_high_bid"`
+	AuctionEnd     time.Time     `json:"auction_end"`
+	Status         AuctionStatus `json:"status"`
+}
+
+

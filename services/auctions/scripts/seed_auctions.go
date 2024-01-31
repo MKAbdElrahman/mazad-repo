@@ -13,7 +13,7 @@ import (
 const serverURL = "http://localhost:3000" // Update with your server URL
 
 func main() {
-	auctions := []model.AuctionPayload{
+	auctions := []model.CreateAuctionPayload{
 		{
 			Item: model.Item{
 				Name:         "Artwork 1",
